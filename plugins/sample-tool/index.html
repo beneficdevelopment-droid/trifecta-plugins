@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sample Toolbar Tool</title>
+  <style>
+    body {
+      font-family: system-ui, sans-serif;
+      padding: 12px;
+      background: #f5f5f7;
+      color: #1d1d1f;
+      margin: 0;
+    }
+    h3 {
+      margin: 0 0 8px;
+      font-size: 13px;
+      color: #86868b;
+    }
+    button {
+      width: 100%;
+      padding: 8px;
+      border: none;
+      border-radius: 6px;
+      background: #0071e3;
+      color: white;
+      font-size: 13px;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #0077ed;
+    }
+  </style>
+</head>
+<body>
+  <h3>Sample Toolbar Tool</h3>
+  <button id="runBtn">Run Tool</button>
+  <script>
+    document.getElementById('runBtn').addEventListener('click', () => {
+      console.log('Sample toolbar tool executed.');
+    });
+  </script>
+</body>
+</html>
