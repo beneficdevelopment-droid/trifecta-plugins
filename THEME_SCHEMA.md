@@ -43,6 +43,42 @@ You only need to pick 3 colors. The app handles the rest.
 
 - For a **dark theme**: `secondary` and `tertiary` should be dark (luminance < 0.15)
 - For a **light theme**: `secondary` and `tertiary` should be light colors
+
+---
+
+# Trifecta Plugin Log Tool Schema
+
+Log tools write structured log entries into Trifecta's built-in log system.
+They do not render HTML inside the note editor.
+
+### `logType` Field (inside `index.html`)
+
+A `<select>` or programmatic value that specifies the severity level of the log entry.
+
+```html
+<select id="logType">
+  <option value="info">Info</option>
+  <option value="warn">Warn</option>
+  <option value="error">Error</option>
+</select>
+```
+
+### Valid Values for `logType`
+
+| Value | Use Case |
+|-------|----------|
+| `info` | General informational log entry |
+| `warn` | Warning or non-critical issue |
+| `error` | Error or critical failure |
+
+### `bridge.call` Usage
+
+```js
+await bridge.call('log.write', { logType, message });
+```
+
+* `logType` — one of `"info"`, `"warn"`, `"error"`
+* `message` — string describing the log entry
 - `primary` can be any accent color — it will automatically get white or black text on top of it depending on its luminance
 - `hoverRing` is often a lighter or more saturated version of `primary`
 
