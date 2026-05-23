@@ -53,7 +53,7 @@
     {
       "id": "sample-log-tool",
       "name": "Sample Log Tool",
-      "type": "log-tool",
+          "type": "toolbar-tool",
       "author": "Trifecta",
       "description": "A minimal example log tool plugin — writes structured log entries.",
       "version": "1.0.0",
