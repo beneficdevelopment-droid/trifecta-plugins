@@ -1,0 +1,10 @@
+{
+  "id": "sample-theme",
+  "name": "Sample Theme",
+  "type": "theme",
+  "version": "1.0.0",
+  "minAppVersion": "1.0.0",
+  "author": "Trifecta",
+  "description": "A minimal example theme showing the correct file structure.",
+  "permissions": []
+}
