@@ -49,6 +49,24 @@
         "manifest.json": "https://beneficdevelopment-droid.github.io/trifecta-plugins/plugins/sample-template/manifest.json",
         "template.json": "https://beneficdevelopment-droid.github.io/trifecta-plugins/plugins/sample-template/template.json"
       }
+    },
+    {
+      "id": "sample-log-tool",
+      "name": "Sample Log Tool",
+      "type": "log-tool",
+      "author": "Trifecta",
+      "description": "A minimal example log tool plugin — writes structured log entries.",
+      "version": "1.0.0",
+      "minAppVersion": "1.0.0",
+      "tags": ["example", "tool"],
+      "free": true,
+      "pricing": {
+        "model": "free"
+      },
+      "files": {
+        "manifest.json": "https://beneficdevelopment-droid.github.io/trifecta-plugins/plugins/sample-log-tool/manifest.json",
+        "index.html": "https://beneficdevelopment-droid.github.io/trifecta-plugins/plugins/sample-log-tool/index.html"
+      }
     }
   ]
 }
