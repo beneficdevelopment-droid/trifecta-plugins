@@ -21,38 +21,54 @@ button:disabled { opacity: 0.5; cursor: default; }
 <body>
 <h3>Log Writer</h3>
 <label for="logType">Log Type</label>
-<select id="logType">
-<option value="info">Info</option>
-<option value="warn">Warn</option>
-<option value="error">Error</option>
-</select>
+<select id="logType"><option value="info">Info</option><option value="warn">Warn</option><option value="error">Error</option></select>
 <label for="logMessage">Message</label>
 <input id="logMessage" type="text" placeholder="Enter log message...">
 <button id="runBtn">Write Log</button>
 <div id="log-output"></div>
 <script>
-document.getElementById('runBtn').addEventListener('click', async () => {
-const btn = document.getElementById('runBtn');
-const logType = document.getElementById('logType').value;
-const message = document.getElementById('logMessage').value.trim();
-const output = document.getElementById('log-output');
-if (!message) { output.textContent = 'Please enter a message.'; return; }
-btn.disabled = true;
-btn.textContent = 'Writing...';
-output.textContent = '';
-try {
-await bridge.call('log.write', { logType, message });
-const now = new Date().toLocaleTimeString();
-const tagClass = 'tag-' + logType;
-output.innerHTML = '<span class="tag ' + tagClass + '">' + logType.toUpperCase() + '</span>' + '<span class="timestamp">[' + now + ']</span> ' + message + '<br>Log written successfully.';
-document.getElementById('logMessage').value = '';
-} catch (e) {
-output.textContent = 'Error: ' + e.message;
-} finally {
-btn.disabled = false;
-btn.textContent = 'Write Log';
+async function loadLogs() {
+  try {
+    const stored = await bridge.storage.get('logs');
+    if (stored) renderLogs(stored);
+  } catch (e) {
+    // No stored logs yet, or bridge.storage not available
+  }
 }
+function renderLogs(logs) {
+  const output = document.getElementById('log-output');
+  output.innerHTML = logs.map(entry => {
+    const tagClass = 'tag-' + entry.logType;
+    return '<span class="tag ' + tagClass + '">' + entry.logType.toUpperCase() + '</span>' + '<span class="timestamp">[' + entry.timestamp + ']</span> ' + entry.message + '<br>';
+  }).join('');
+}
+document.getElementById('runBtn').addEventListener('click', async () => {
+  const btn = document.getElementById('runBtn');
+  const logType = document.getElementById('logType').value;
+  const message = document.getElementById('logMessage').value.trim();
+  const output = document.getElementById('log-output');
+  if (!message) { output.textContent = 'Please enter a message.'; return; }
+  btn.disabled = true;
+  btn.textContent = 'Writing...';
+  output.textContent = '';
+  try {
+    const now = new Date().toLocaleTimeString();
+    const entry = { logType, message, timestamp: now };
+    // Prepend pattern: get existing logs, prepend new entry, save back
+    const stored = await bridge.storage.get('logs') || [];
+    stored.unshift(entry);
+    await bridge.storage.set('logs', stored);
+    renderLogs(stored);
+    document.getElementById('logMessage').value = '';
+  } catch (e) {
+    output.textContent = 'Error: ' + e.message;
+  } finally {
+    btn.disabled = false;
+    btn.textContent = 'Write Log';
+  }
 });
+// Load existing logs on init
+loadLogs();
 </script>
 </body>
 </html>
