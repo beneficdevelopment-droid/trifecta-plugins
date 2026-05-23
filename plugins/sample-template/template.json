@@ -1,34 +1,5 @@
 {
-  "$schema": "https://tripple-tools.com/template-schema/v1.json",
+  "type": "regular",
   "name": "Sample Note Template",
-  "sections": [
-    {
-      "type": "heading",
-      "level": 1,
-      "text": "Project Notes"
-    },
-    {
-      "type": "heading",
-      "level": 2,
-      "text": "Overview"
-    },
-    {
-      "type": "paragraph",
-      "text": "Add project overview here."
-    },
-    {
-      "type": "heading",
-      "level": 2,
-      "text": "Tasks"
-    },
-    {
-      "type": "list",
-      "style": "checkbox",
-      "items": [
-        "Task 1",
-        "Task 2",
-        "Task 3"
-      ]
-    }
-  ]
+  "content": "<h2>Project Notes</h2><h3>Overview</h3><p>Add project overview here.</p><h3>Tasks</h3><ul><li>Task 1</li><li>Task 2</li><li>Task 3</li></ul><h3>Notes</h3><p></p>"
 }
