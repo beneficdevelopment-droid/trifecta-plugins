@@ -1,0 +1,29 @@
+name: Validate Plugin
+
+on:
+  pull_request:
+    paths:
+      - 'plugins/**'
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          ref: ${{ github.event.pull_request.head.sha }}
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Validate plugin changes
+        run: node .github/scripts/validate.js ${{ github.event.number }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PR_NUMBER: ${{ github.event.number }}
+          PR_AUTHOR: ${{ github.event.pull_request.user.login }}
