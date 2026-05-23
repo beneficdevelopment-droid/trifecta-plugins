@@ -2,42 +2,50 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sample Toolbar Tool</title>
   <style>
-    body {
-      font-family: system-ui, sans-serif;
-      padding: 12px;
-      background: #f5f5f7;
-      color: #1d1d1f;
-      margin: 0;
-    }
-    h3 {
-      margin: 0 0 8px;
-      font-size: 13px;
-      color: #86868b;
-    }
-    button {
-      width: 100%;
-      padding: 8px;
-      border: none;
-      border-radius: 6px;
-      background: #0071e3;
-      color: white;
-      font-size: 13px;
-      cursor: pointer;
-    }
-    button:hover {
-      background: #0077ed;
-    }
+    body { font-family: system-ui, sans-serif; padding: 16px; margin: 0; background: transparent; color: inherit; }
+    h3 { margin: 0 0 12px; font-size: 11px; opacity: 0.5; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; }
+    button { width: 100%; padding: 10px; border: none; border-radius: 8px; background: #0071e3; color: white; font-size: 13px; font-weight: 600; cursor: pointer; }
+    button:hover { background: #0077ed; }
+    button:disabled { opacity: 0.5; cursor: default; }
+    #result { margin-top: 14px; font-size: 15px; font-weight: 700; text-align: center; min-height: 20px; }
+    #breakdown { margin-top: 6px; font-size: 11px; opacity: 0.5; text-align: center; line-height: 1.8; }
   </style>
 </head>
 <body>
-  <h3>Sample Toolbar Tool</h3>
-  <button id="runBtn">Run Tool</button>
+  <h3>Card Counter</h3>
+  <button id="runBtn">Count Cards</button>
+  <div id="result"></div>
+  <div id="breakdown"></div>
+
   <script>
-    document.getElementById('runBtn').addEventListener('click', () => {
-      console.log('Sample toolbar tool executed.');
+    document.getElementById('runBtn').addEventListener('click', async () => {
+      const btn         = document.getElementById('runBtn');
+      const resultEl    = document.getElementById('result');
+      const breakdownEl = document.getElementById('breakdown');
+
+      btn.disabled = true;
+      btn.textContent = 'Counting…';
+      resultEl.textContent = '';
+      breakdownEl.textContent = '';
+
+      try {
+        const nodes = await bridge.call('canvas.getNodes', {});
+        const total = nodes.length;
+
+        const counts = {};
+        nodes.forEach(n => { counts[n.type] = (counts[n.type] || 0) + 1; });
+
+        resultEl.textContent = total + ' card' + (total !== 1 ? 's' : '') + ' on this canvas';
+        breakdownEl.innerHTML = Object.entries(counts)
+          .map(([type, n]) => n + ' ' + type)
+          .join('<br>');
+      } catch (e) {
+        resultEl.textContent = 'Error: ' + e.message;
+      } finally {
+        btn.disabled = false;
+        btn.textContent = 'Count Cards';
+      }
     });
   </script>
 </body>
