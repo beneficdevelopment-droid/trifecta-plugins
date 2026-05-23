@@ -1,0 +1,12 @@
+{
+  "$schema": "https://tripple-tools.com/plugin-schema/v1.json",
+  "id": "sample-tool",
+  "name": "Sample Toolbar Tool",
+  "type": "toolbar-tool",
+  "version": "1.0.0",
+  "description": "A sample toolbar tool plugin for Trifecta.",
+  "author": "Trifecta Team",
+  "icon": "plugins/sample-tool/icon.svg",
+  "permissions": [],
+  "file": "plugins/sample-tool/index.html"
+}
