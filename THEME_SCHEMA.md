@@ -120,3 +120,27 @@ Valid `canvasId` values: `"personal"`, `"social"`, `"professional"`, or any cust
 - `content` is required for regular and must be a valid HTML string
 - `canvasId` is required for smart
 - `name` is optional but recommended (used as a fallback note title)
+
+- ## Plugin Manifest (`manifest.json`)
+
+Every plugin must include a `manifest.json` that declares its identity and type.
+
+## Fields
+
+| Field | Required | Description |
+|-------|----------|-------------|
+| `$schema` | required | JSON Schema reference. Must be `https://tripple-tools.com/plugin-schema/v1.json` |
+| `id` | required | Unique plugin identifier. Must be lowercase, hyphen-separated, and match the folder name |
+| `name` | required | Human-readable plugin name |
+| `type` | required | One of: `"theme"`, `"toolbar-tool"`, or `"note-template"` |
+| `version` | required | Valid semver string (e.g., `"1.0.0"`) |
+| `description` | required | A valid plugin description |
+| `author` | required | Author or organization name |
+| `icon` | optional | Plugin icon. If omitted, Trifecta automatically uses a default plug icon. When provided, it must be a path to an `.svg` file inside the plugin folder, or a single emoji character. Example: `"icon": "icon.svg"` or `"icon": "📋"`. Hardcoded colors in the SVG are automatically replaced with `currentColor` at load time so the icon inherits the theme color — authors do not need to set `fill="currentColor"` manually, but it is harmless if they do. |
+| `permissions` | optional | Array of permission strings the plugin requires |
+| `file` | required | Path to the main plugin file relative to the repo root |
+
+## Tips
+
+- `icon` can be an `.svg` file path relative to the plugin folder (e.g., `"icon.svg"`) or a single emoji (e.g., `"📋"`)  
+- SVG icons are automatically tinted with the current theme color at load time; `fill="currentColor"` is optional but harmless if you include it
