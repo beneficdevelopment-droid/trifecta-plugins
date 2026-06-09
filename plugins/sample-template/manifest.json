@@ -1,11 +1,12 @@
 {
-  "$schema": "https://tripple-tools.com/plugin-schema/v1.json",
   "id": "sample-template",
-  "name": "Sample Note Template",
+  "name": "Sample Template",
   "type": "note-template",
   "version": "1.0.0",
-  "description": "A sample note template plugin for Trifecta.",
-  "author": "Trifecta Team",
-  "permissions": [],
-  "file": "plugins/sample-template/template.json"
+  "minAppVersion": "1.0.0",
+  "author": "Trifecta",
+  "icon": "📄",
+  "description": "A minimal example note template with safe variable substitution.",
+  "keywords": ["example", "template", "notes"],
+  "permissions": {}
 }
