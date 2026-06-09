@@ -1,13 +1,16 @@
 {
-  "$schema": "https://tripple-tools.com/plugin-schema/v1.json",
   "id": "sample-log-tool",
   "name": "Sample Log Tool",
   "type": "toolbar-tool",
-  "logType": true,
   "version": "1.0.0",
-  "description": "A sample log tool plugin for Trifecta that writes structured log entries.",
-  "author": "Trifecta Team",
-  "icon": "plugins/sample-log-tool/icon.svg",
-  "permissions": [],
-  "file": "plugins/sample-log-tool/index.html"
+  "minAppVersion": "1.0.0",
+  "author": "Trifecta",
+  "icon": "📋",
+  "logType": true,
+  "description": "A minimal example log tool plugin — writes structured log entries.",
+  "displayMode": "panel",
+  "keywords": ["example", "log", "tool"],
+  "permissions": {
+    "canvas": ["read", "write"]
+  }
 }
