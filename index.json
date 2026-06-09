@@ -1,18 +1,18 @@
 {
   "specVersion": 1,
-  "updatedAt": "2026-05-23T00:00:00Z",
+  "updatedAt": "2026-06-09T00:00:00Z",
   "plugins": [
     {
       "id": "sample-theme",
       "name": "Sample Theme",
       "type": "theme",
       "author": "Trifecta",
+      "icon": "🎨",
       "description": "A minimal example theme showing the correct file structure.",
       "version": "1.0.0",
       "minAppVersion": "1.0.0",
       "tags": ["example", "theme"],
       "free": true,
-      "pricing": { "model": "free" },
       "files": {
         "manifest.json": "https://beneficdevelopment-droid.github.io/trifecta-plugins/plugins/sample-theme/manifest.json",
         "theme.json": "https://beneficdevelopment-droid.github.io/trifecta-plugins/plugins/sample-theme/theme.json"
@@ -23,12 +23,12 @@
       "name": "Sample Tool",
       "type": "toolbar-tool",
       "author": "Trifecta",
+      "icon": "🔧",
       "description": "A minimal example toolbar tool — counts cards on the active canvas.",
       "version": "1.0.0",
       "minAppVersion": "1.0.0",
       "tags": ["example", "tool"],
       "free": true,
-      "pricing": { "model": "free" },
       "files": {
         "manifest.json": "https://beneficdevelopment-droid.github.io/trifecta-plugins/plugins/sample-tool/manifest.json",
         "index.html": "https://beneficdevelopment-droid.github.io/trifecta-plugins/plugins/sample-tool/index.html"
@@ -39,12 +39,12 @@
       "name": "Sample Template",
       "type": "note-template",
       "author": "Trifecta",
+      "icon": "📄",
       "description": "A minimal example note template with safe variable substitution.",
       "version": "1.0.0",
       "minAppVersion": "1.0.0",
       "tags": ["example", "template"],
       "free": true,
-      "pricing": { "model": "free" },
       "files": {
         "manifest.json": "https://beneficdevelopment-droid.github.io/trifecta-plugins/plugins/sample-template/manifest.json",
         "template.json": "https://beneficdevelopment-droid.github.io/trifecta-plugins/plugins/sample-template/template.json"
@@ -53,16 +53,14 @@
     {
       "id": "sample-log-tool",
       "name": "Sample Log Tool",
-          "type": "toolbar-tool",
+      "type": "toolbar-tool",
       "author": "Trifecta",
+      "icon": "📋",
       "description": "A minimal example log tool plugin — writes structured log entries.",
       "version": "1.0.0",
       "minAppVersion": "1.0.0",
       "tags": ["example", "tool"],
       "free": true,
-      "pricing": {
-        "model": "free"
-      },
       "files": {
         "manifest.json": "https://beneficdevelopment-droid.github.io/trifecta-plugins/plugins/sample-log-tool/manifest.json",
         "index.html": "https://beneficdevelopment-droid.github.io/trifecta-plugins/plugins/sample-log-tool/index.html"
